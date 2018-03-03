@@ -33,7 +33,6 @@ client.on("message", async message => {
   let curLevel = Math.floor(0.1 * Math.sqrt(userPoints));
   let userData = points[message.author.id];
   if(message.author.bot) return;
-  if(message.isPrivate) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
@@ -121,6 +120,10 @@ client.on("message", async message => {
       {
         name: "!league",
         value: "Invites the server owner to Rocket League."
+      },
+	  {
+        name: "!dbd",
+        value: "Invites the server owner to Dead by Daylight."
       },
       {
         name: "!kick [mention] [reason]",
@@ -285,7 +288,7 @@ client.on("message", async message => {
     if(message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
-		const dispatcher = connection.playFile('TestAudio.mp3');
+		const dispatcher = connection.playArbitraryInput('http://comet.shoutca.st:8563/1');
           message.reply('I have successfully connected to the channel!');
 		  dispatcher.resume()
 		  console.log("Attempting to play audio.");
