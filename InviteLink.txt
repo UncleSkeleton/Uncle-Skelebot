@@ -1,0 +1,4 @@
+https://discordapp.com/oauth2/authorize?&client_id=417612667038072832&scope=bot&permissions=0
+
+http://store.steampowered.com/app/252950/Rocket_League/
+http://steamcommunity.com/games/252950/rss/
