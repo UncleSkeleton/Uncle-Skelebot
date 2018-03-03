@@ -33,6 +33,7 @@ client.on("message", async message => {
   let curLevel = Math.floor(0.1 * Math.sqrt(userPoints));
   let userData = points[message.author.id];
   if(message.author.bot) return;
+  if(message.isPrivate) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
