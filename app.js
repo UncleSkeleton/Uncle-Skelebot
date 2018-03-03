@@ -313,7 +313,15 @@ client.on("message", async message => {
     return message.reply(`${badRole}`);
 	}
 	message.channel.send(`Did someone say League? <@267655839685410816>`);
+	
 	}
+	    if(command === "dbd") {
+    if(!message.member.roles.has(config.adminID) ){
+    return message.reply(`${badRole}`);
+	}
+	message.channel.send(`Five generators need your help! <@267655839685410816>`);
+	}
+	
   })
   
 
