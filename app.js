@@ -284,17 +284,15 @@ client.on("message", async message => {
   
     if(command === "vcend") {
     // Only try to join the sender's voice channel if they are in one themselves
-	console.log(`Attempted join.`);
+	console.log(`Attempted leave.`);
     if(message.member.voiceChannel) {
       message.member.voiceChannel.leave()
-        .then(connection => { // Connection is an instance of VoiceConnection
           message.reply('I have successfully disconnected!');
-		  dispatcher.end();
-        })
-        .catch(console.log);
-    } else {
-      message.reply('I am not in your voice channel!');
     }
+	else
+	{
+		message.reply('I am not in your voice channel!');
+	}
   }
   
   if(command === "vctest") {
@@ -320,7 +318,7 @@ client.on("message", async message => {
     if(message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
-		const dispatcher = connection.playArbitraryInput('webradio.radiomonitor.com/m3u/Dream100-MP3.m3u');
+		const dispatcher = connection.playFile('./radios/Dream100.m3u');
           message.reply('I have successfully connected to the channel! Now playing Dream 100.');
 		  dispatcher.resume()
 		  console.log("Attempting to play audio.");
