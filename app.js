@@ -282,6 +282,22 @@ client.on("message", async message => {
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
   }
   
+    if(command === "vcend") {
+    // Only try to join the sender's voice channel if they are in one themselves
+	console.log(`Attempted join.`);
+    if(message.member.voiceChannel) {
+      message.member.voiceChannel.leave()
+        .then(connection => { // Connection is an instance of VoiceConnection
+          message.reply('I have successfully disconnected!');
+		  dispatcher.end();
+		  console.log("Attempting to play audio.");
+        })
+        .catch(console.log);
+    } else {
+      message.reply('You need to join a voice channel first!');
+    }
+  }
+  
   if(command === "vctest") {
     // Only try to join the sender's voice channel if they are in one themselves
 	console.log(`Attempted join.`);
@@ -289,7 +305,7 @@ client.on("message", async message => {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
 		const dispatcher = connection.playArbitraryInput('http://comet.shoutca.st:8563/1');
-          message.reply('I have successfully connected to the channel!');
+          message.reply('I have successfully connected to the channel! Now playing Dance Attack FM.');
 		  dispatcher.resume()
 		  console.log("Attempting to play audio.");
         })
@@ -298,6 +314,25 @@ client.on("message", async message => {
       message.reply('You need to join a voice channel first!');
     }
   }
+  
+    if(command === "vctest2") {
+    // Only try to join the sender's voice channel if they are in one themselves
+	console.log(`Attempted join.`);
+    if(message.member.voiceChannel) {
+      message.member.voiceChannel.join()
+        .then(connection => { // Connection is an instance of VoiceConnection
+		const dispatcher = connection.playArbitraryInput('http://webradio.radiomonitor.com/m3u/Dream100-MP3.m3u');
+          message.reply('I have successfully connected to the channel! Now playing Dream 100.');
+		  dispatcher.resume()
+		  console.log("Attempting to play audio.");
+        })
+        .catch(console.log);
+    } else {
+      message.reply('You need to join a voice channel first!');
+    }
+  }
+  
+ 
   
   if(command === "purge") {
     if(!message.member.roles.has(config.modID) ){
@@ -319,7 +354,8 @@ client.on("message", async message => {
 	message.channel.send(`Did someone say League? <@267655839685410816>`);
 	
 	}
-	    if(command === "dbd") {
+	
+	if(command === "dbd") {
     if(!message.member.roles.has(config.adminID) ){
     return message.reply(`${badRole}`);
 	}
