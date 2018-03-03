@@ -318,7 +318,7 @@ client.on("message", async message => {
     if(message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
-		const dispatcher = connection.playFile('./radios/Dream100.m3u');
+		const dispatcher = connection.playArbitraryInput('http://stream4.radiomonitor.com/Dream100-MP3?token=Y4d/YWKJg2hliId1pLeunmOCfV5/ooA=');
           message.reply('I have successfully connected to the channel! Now playing Dream 100.');
 		  dispatcher.resume()
 		  console.log("Attempting to play audio.");
