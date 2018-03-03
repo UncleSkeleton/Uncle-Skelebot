@@ -295,7 +295,7 @@ client.on("message", async message => {
 	}
   }
   
-  if(command === "radio Dance Attack FM") {
+  if(command === "vctest") {
     // Only try to join the sender's voice channel if they are in one themselves
 	console.log(`Attempted join.`);
     if(message.member.voiceChannel) {
