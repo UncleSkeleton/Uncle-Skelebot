@@ -295,7 +295,7 @@ client.on("message", async message => {
 	}
   }
   
-  if(command === "vctest") {
+  if(command === "radio Dance Attack FM") {
     // Only try to join the sender's voice channel if they are in one themselves
 	console.log(`Attempted join.`);
     if(message.member.voiceChannel) {
@@ -311,24 +311,6 @@ client.on("message", async message => {
       message.reply('You need to join a voice channel first!');
     }
   }
-  
-    if(command === "vctest2") {
-    // Only try to join the sender's voice channel if they are in one themselves
-	console.log(`Attempted join.`);
-    if(message.member.voiceChannel) {
-      message.member.voiceChannel.join()
-        .then(connection => { // Connection is an instance of VoiceConnection
-		const dispatcher = connection.playArbitraryInput('http://stream4.radiomonitor.com/Dream100-MP3?token=Y4d/YWKJg2hliId1pLeunmOCfV5/ooA=');
-          message.reply('I have successfully connected to the channel! Now playing Dream 100.');
-		  dispatcher.resume()
-		  console.log("Attempting to play audio.");
-        })
-        .catch(console.log);
-    } else {
-      message.reply('You need to join a voice channel first!');
-    }
-  }
-  
  
   
   if(command === "purge") {
