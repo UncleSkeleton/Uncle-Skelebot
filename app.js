@@ -290,11 +290,10 @@ client.on("message", async message => {
         .then(connection => { // Connection is an instance of VoiceConnection
           message.reply('I have successfully disconnected!');
 		  dispatcher.end();
-		  console.log("Attempting to play audio.");
         })
         .catch(console.log);
     } else {
-      message.reply('You need to join a voice channel first!');
+      message.reply('I am not in your voice channel!');
     }
   }
   
@@ -321,7 +320,7 @@ client.on("message", async message => {
     if(message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
-		const dispatcher = connection.playArbitraryInput('http://webradio.radiomonitor.com/m3u/Dream100-MP3.m3u');
+		const dispatcher = connection.playArbitraryInput('webradio.radiomonitor.com/m3u/Dream100-MP3.m3u');
           message.reply('I have successfully connected to the channel! Now playing Dream 100.');
 		  dispatcher.resume()
 		  console.log("Attempting to play audio.");
