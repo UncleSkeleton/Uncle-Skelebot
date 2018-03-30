@@ -365,7 +365,7 @@ client.on("message", async message => {
         var x = getRandomInt(0, 9);
 		if (x < 6){
          if (x < 3){
-			message.channel.send(`Test1`;
+			message.channel.send(`Test1`);
 			memberData.points = Math.floor(memberData.points + parseInt(5));
 			console.log("Match command returned Test1");
 		}
