@@ -362,26 +362,21 @@ client.on("message", async message => {
 			level: 0
 		};
 		let memberData = points[member.id];
-		
-  		var msg1 = Array(3);
-		msg1[1] = `Test1`;
-	    msg1[2] = `Test2`;
-		msg1[3] = `Test3`;
         var x = getRandomInt(0, 9);
 		if (x < 6){
          if (x < 3){
-			msg.channel.sendMessage(msg1[1]);
+			message.channel.send(`Test1`;
 			memberData.points = Math.floor(memberData.points + parseInt(5));
 			console.log("Match command returned Test1");
 		}
 		else{
-               msg.channel.sendMessage(msg1[3]);
+               message.channel.send(`Test3`);
 			   memberData.points = Math.floor(memberData.points + parseInt(15));
 			   	console.log("Match command returned Test3");
 		}
 		}
 		else{ 
-			msg.channel.sendMessage(msg1[2]);
+			message.channel.send(`Test2`);
 			memberData.points = Math.floor(memberData.points + parseInt(10));
 			console.log("Match command returned Test2");
 		}
