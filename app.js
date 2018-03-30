@@ -58,7 +58,6 @@ client.on("message", async message => {
     if(!message.member.roles.has(config.adminID) ){
     return message.reply(`${badRole}`);
 	}
-		return message.reply(`${badRole}`);
 		let member = message.mentions.members.first();
 		let [name, pointstogive, ...other] = args;
 				if(!points[member.id]) points[member.id] = {
