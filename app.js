@@ -368,20 +368,17 @@ client.on("message", async message => {
 			message.channel.send(`Test1`);
 			authorData.points = Math.floor(memberData.points + parseInt(5));
 			console.log("Match command returned Test1");
-			fs.writeFile("./points.json", JSON.stringify(points), (err) => {
 		}
 		else{
                message.channel.send(`Test3`);
 			   authorData.points = Math.floor(memberData.points + parseInt(15));
 			   	console.log("Match command returned Test3");
-				fs.writeFile("./points.json", JSON.stringify(points), (err) => {
 		}
 		}
 		else{ 
 			message.channel.send(`Test2`);
 			authorData.points = Math.floor(memberData.points + parseInt(10));
 			console.log("Match command returned Test2");
-			fs.writeFile("./points.json", JSON.stringify(points), (err) => {
 		}
 			}
   
