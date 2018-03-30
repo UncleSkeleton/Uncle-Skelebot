@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
-const NOTIFY_CHANNEL;
+var NOTIFY_CHANNEL;
 
 let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 const badRole = ("Sorry, you don't have the appropriate role for this command.");
