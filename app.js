@@ -7,6 +7,12 @@ var NOTIFY_CHANNEL;
 let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 const badRole = ("Sorry, you don't have the appropriate role for this command.");
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
@@ -348,6 +354,38 @@ client.on("message", async message => {
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
+  
+    	    if(command === "match") {
+	let member = message.mentions.users.first();
+				if(!points[member.id]) points[member.id] = {
+			points: 0,
+			level: 0
+		};
+		let memberData = points[member.id];
+		
+  		var msg1 = Array(3);
+		msg1[1] = `Test1`;
+	    msg1[2] = `Test2`;
+		msg1[3] = `Test3`;
+        var x = getRandomInt(0, 9);
+		if (x < 6){
+         if (x < 3){
+			msg.channel.sendMessage(msg1[1]);
+			memberData.points = Math.floor(memberData.points + parseInt(5));
+			console.log("Match command returned Test1");
+		}
+		else{
+               msg.channel.sendMessage(msg1[3]);
+			   memberData.points = Math.floor(memberData.points + parseInt(15));
+			   	console.log("Match command returned Test3");
+		}
+		}
+		else{ 
+			msg.channel.sendMessage(msg1[2]);
+			memberData.points = Math.floor(memberData.points + parseInt(10));
+			console.log("Match command returned Test2");
+		}
+			}
   
     if(command === "league") {
     if(!message.member.roles.has(config.adminID) ){
