@@ -361,24 +361,27 @@ client.on("message", async message => {
 			points: 0,
 			level: 0
 		};
-		let memberData = points[member.id];
+		let authorData = points[author.id];
         var x = getRandomInt(0, 9);
 		if (x < 6){
          if (x < 3){
 			message.channel.send(`Test1`);
-			memberData.points = Math.floor(memberData.points + parseInt(5));
+			authorData.points = Math.floor(memberData.points + parseInt(5));
 			console.log("Match command returned Test1");
+			fs.writeFile("./points.json", JSON.stringify(points), (err) => {
 		}
 		else{
                message.channel.send(`Test3`);
-			   memberData.points = Math.floor(memberData.points + parseInt(15));
+			   authorData.points = Math.floor(memberData.points + parseInt(15));
 			   	console.log("Match command returned Test3");
+				fs.writeFile("./points.json", JSON.stringify(points), (err) => {
 		}
 		}
 		else{ 
 			message.channel.send(`Test2`);
-			memberData.points = Math.floor(memberData.points + parseInt(10));
+			authorData.points = Math.floor(memberData.points + parseInt(10));
 			console.log("Match command returned Test2");
+			fs.writeFile("./points.json", JSON.stringify(points), (err) => {
 		}
 			}
   
