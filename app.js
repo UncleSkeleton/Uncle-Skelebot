@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
+const NOTIFY_CHANNEL;
 
 let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 const badRole = ("Sorry, you don't have the appropriate role for this command.");
@@ -10,6 +11,7 @@ const badRole = ("Sorry, you don't have the appropriate role for this command.")
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   client.user.setActivity(`!commands`, {type: "WATCHING"});
+  NOTIFY_CHANNEL = client.channels.find('id', '418013854233264138');
 });
 
 client.on("error", () => {
@@ -27,6 +29,16 @@ client.on("guildCreate", guild => {
 client.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
+
+const TARGET_MINUTE = 0; // Minute of the hour when the chest will refresh, 30 means 1:30, 2:30, etc.
+const OFFSET = 10; // Notification will be sent this many minutes before the target time, must be an integer
+const NOTIFY_MINUTE = (TARGET_MINUTE < OFFSET ? 60 : 0) + TARGET_MINUTE - OFFSET;
+
+setInterval(function() {
+    var d = new Date();
+    if(d.getMinutes() !== NOTIFY_MINUTE) return; // Return if current minute is not the notify minute
+    NOTIFY_CHANNEL.sendMessage('You will have to wait ' + OFFSET + ' minutes!');
+}, 60 * 1000); // Check every minute
 
 client.on("message", async message => {
   let userPoints = points[message.author.id] ? points[message.author.id].points : 0;
