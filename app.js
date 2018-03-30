@@ -11,7 +11,7 @@ const badRole = ("Sorry, you don't have the appropriate role for this command.")
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   client.user.setActivity(`!commands`, {type: "WATCHING"});
-  NOTIFY_CHANNEL = client.channels.find('id', '418013854233264138');
+  NOTIFY_CHANNEL = client.channels.find('id', '429386089560670219');
 });
 
 client.on("error", () => {
@@ -31,13 +31,15 @@ client.on("guildDelete", guild => {
 });
 
 const TARGET_MINUTE = 0; // Minute of the hour when the chest will refresh, 30 means 1:30, 2:30, etc.
-const OFFSET = 10; // Notification will be sent this many minutes before the target time, must be an integer
+const OFFSET = 0; // Notification will be sent this many minutes before the target time, must be an integer
 const NOTIFY_MINUTE = (TARGET_MINUTE < OFFSET ? 60 : 0) + TARGET_MINUTE - OFFSET;
 
 setInterval(function() {
     var d = new Date();
     if(d.getMinutes() !== NOTIFY_MINUTE) return; // Return if current minute is not the notify minute
-    NOTIFY_CHANNEL.sendMessage('You will have to wait ' + OFFSET + ' minutes!');
+//    NOTIFY_CHANNEL.sendMessage('You will have to wait ' + OFFSET + ' minutes!');
+    NOTIFY_CHANNEL.sendMessage('Bing bong, an hour has passed!');
+	console.log('The bot has bing bonged.');
 }, 60 * 1000); // Check every minute
 
 client.on("message", async message => {
@@ -120,7 +122,15 @@ client.on("message", async message => {
       },
       {
         name: "!about [mention]",
-        value: "Replies with a link to your discord profile picture."
+        value: "Replies with details on the mentioned user."
+      },
+	  {
+        name: "!vctest",
+        value: "Plays Dance Attack FM, test command."
+      },
+	  {
+        name: "!vcend",
+        value: "Ends the radio stream."
       },
       {
         name: "!ping",
@@ -152,7 +162,7 @@ client.on("message", async message => {
 	}
   }
   )
-		}
+}
   
   	    if(command === "about") {
 	let member = message.mentions.users.first();
