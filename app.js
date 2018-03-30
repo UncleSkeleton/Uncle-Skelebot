@@ -55,7 +55,9 @@ client.on("message", async message => {
   }
   
   if(command == "give") {
-	     if(!message.member.roles.some(r=>["The Slightly Parched", "The Roasting Admin"].includes(r.name)) )
+    if(!message.member.roles.has(config.adminID) ){
+    return message.reply(`${badRole}`);
+	}
 		return message.reply(`${badRole}`);
 		let member = message.mentions.members.first();
 		let [name, pointstogive, ...other] = args;
