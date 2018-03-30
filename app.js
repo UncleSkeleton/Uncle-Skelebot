@@ -44,7 +44,7 @@ setInterval(function() {
     var d = new Date();
     if(d.getMinutes() !== NOTIFY_MINUTE) return; // Return if current minute is not the notify minute
 //    NOTIFY_CHANNEL.sendMessage('You will have to wait ' + OFFSET + ' minutes!');
-    NOTIFY_CHANNEL.sendMessage('Bing bong, an hour has passed!');
+    NOTIFY_CHANNEL.send('Bing bong, an hour has passed!');
 	console.log('The bot has bing bonged.');
 }, 60 * 1000); // Check every minute
 
