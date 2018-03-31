@@ -366,18 +366,18 @@ client.on("message", async message => {
 		if (x < 6){
          if (x < 3){
 			message.channel.send(`Test1`);
-			authorData.points = Math.floor(memberData.points + parseInt(5));
+			authorData.points = Math.floor(authorData.points + parseInt(5));
 			console.log("Match command returned Test1");
 		}
 		else{
                message.channel.send(`Test3`);
-			   authorData.points = Math.floor(memberData.points + parseInt(15));
+			   authorData.points = Math.floor(authorData.points + parseInt(15));
 			   	console.log("Match command returned Test3");
 		}
 		}
 		else{ 
 			message.channel.send(`Test2`);
-			authorData.points = Math.floor(memberData.points + parseInt(10));
+			authorData.points = Math.floor(authorData.points + parseInt(10));
 			console.log("Match command returned Test2");
 		}
 			}
