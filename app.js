@@ -366,6 +366,7 @@ client.on("message", async message => {
 			level: 0
 		};
 		let authorData = points[message.author.id];
+		let memberData = points[member.id];
         var x = getRandomInt(0, 9);
 		if (x < 6){
          if (x < 3){
@@ -392,6 +393,7 @@ client.on("message", async message => {
   }
 });
 			authorData.points = Math.floor(authorData.points + parseInt(15));
+			memberData.points = Math.floor(authorData.points + parseInt(-15));
 					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
@@ -420,6 +422,7 @@ client.on("message", async message => {
   }
 });
 			   authorData.points = Math.floor(authorData.points + parseInt(-5));
+			   memberData.points = Math.floor(authorData.points + parseInt(5));
 						fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
@@ -449,6 +452,7 @@ client.on("message", async message => {
   }
 });
 			authorData.points = Math.floor(authorData.points + parseInt(-15));
+			memberData.points = Math.floor(authorData.points + parseInt(15));
 					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
