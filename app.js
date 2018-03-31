@@ -372,7 +372,7 @@ client.on("message", async message => {
     "description": `This was a tense match between ${message.author.username} and ${membertwo.displayName}.\n\nThe result were these final scores:`,
     "color": 16711680,
     "image": {
-      "url": "./resources/Tournaments.png"
+      "url": "https://i.imgur.com/PV2Xi98.jpg"
     },
     "fields": [
       {
