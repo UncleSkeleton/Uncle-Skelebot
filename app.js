@@ -361,7 +361,7 @@ client.on("message", async message => {
 			points: 0,
 			level: 0
 		};
-		let authorData = points[author.id];
+		let authorData = points[message.author.id];
         var x = getRandomInt(0, 9);
 		if (x < 6){
          if (x < 3){
