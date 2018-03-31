@@ -391,7 +391,7 @@ client.on("message", async message => {
     ]
   }
 });
-			authorData.points = Math.floor(authorData.points + parseInt(5));
+			authorData.points = Math.floor(authorData.points + parseInt(15));
 					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
@@ -448,7 +448,7 @@ client.on("message", async message => {
     ]
   }
 });
-			authorData.points = Math.floor(authorData.points + parseInt(10));
+			authorData.points = Math.floor(authorData.points + parseInt(-15));
 					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
