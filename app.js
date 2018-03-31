@@ -393,7 +393,7 @@ client.on("message", async message => {
   }
 });
 			authorData.points = Math.floor(authorData.points + parseInt(15));
-			memberData.points = Math.floor(authorData.points + parseInt(-15));
+			memberData.points = Math.floor(memberData.points + parseInt(-15));
 					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
@@ -422,7 +422,7 @@ client.on("message", async message => {
   }
 });
 			   authorData.points = Math.floor(authorData.points + parseInt(-5));
-			   memberData.points = Math.floor(authorData.points + parseInt(5));
+			   memberData.points = Math.floor(memberData.points + parseInt(5));
 						fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
@@ -452,7 +452,7 @@ client.on("message", async message => {
   }
 });
 			authorData.points = Math.floor(authorData.points + parseInt(-15));
-			memberData.points = Math.floor(authorData.points + parseInt(15));
+			memberData.points = Math.floor(memberData.points + parseInt(15));
 					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
