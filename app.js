@@ -126,6 +126,10 @@ client.on("message", async message => {
         name: "!level",
         value: "Views your current points."
       },
+	  {
+        name: "!match [mention]",
+        value: "Simulates a 1-on-1 Rocket League match for points."
+      },
       {
         name: "!about [mention]",
         value: "Replies with details on the mentioned user."
@@ -340,7 +344,6 @@ client.on("message", async message => {
       message.reply('You need to join a voice channel first!');
     }
   }
- 
   
   if(command === "purge") {
     if(!message.member.roles.has(config.modID) ){
@@ -372,7 +375,7 @@ client.on("message", async message => {
     "description": `This was a tense match between ${message.author.username} and ${membertwo.displayName}.\n\nThe result were these final scores:`,
     "color": 16711680,
     "image": {
-      "url": "https://i.imgur.com/PV2Xi98.jpg"
+      "url": "https://i.imgur.com/CL3pqmz.png"
     },
     "fields": [
       {
@@ -389,24 +392,63 @@ client.on("message", async message => {
   }
 });
 			authorData.points = Math.floor(authorData.points + parseInt(5));
-			console.log("Match command returned Test1");
 					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
 		}
 		else{
-               message.channel.send(`Test3`);
-			   authorData.points = Math.floor(authorData.points + parseInt(15));
-			   	console.log("Match command returned Test3");
+               message.channel.send({
+  "embed": {
+    "title": "Rocket League - Solo Duel",
+    "description": `This was a tense match between ${message.author.username} and ${membertwo.displayName}.\n\nThe result were these final scores:`,
+    "color": 16711680,
+    "image": {
+      "url": "https://i.imgur.com/CL3pqmz.png"
+    },
+    "fields": [
+      {
+        "name": `${message.author.username}`,
+        "value": "Place: 2nd\nGoals: 0\nPoints: -5",
+        "inline": true
+      },
+      {
+        "name": `${membertwo.displayName}`,
+        "value": "Place: 1st\nGoals: 1\nPoints: 5",
+        "inline": true
+      }
+    ]
+  }
+});
+			   authorData.points = Math.floor(authorData.points + parseInt(-5));
 						fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
 		}
 		}
 		else{ 
-			message.channel.send(`Test2`);
+			message.channel.send({
+  "embed": {
+    "title": "Rocket League - Solo Duel",
+    "description": `This was a tense match between ${message.author.username} and ${membertwo.displayName}.\n\nThe result were these final scores:`,
+    "color": 16711680,
+    "image": {
+      "url": "https://i.imgur.com/CL3pqmz.png"
+    },
+    "fields": [
+      {
+        "name": `${message.author.username}`,
+        "value": "Place: 2nd\nGoals: 0\nPoints: -15",
+        "inline": true
+      },
+      {
+        "name": `${membertwo.displayName}`,
+        "value": "Place: 1st\nGoals: 3\nPoints: +15",
+        "inline": true
+      }
+    ]
+  }
+});
 			authorData.points = Math.floor(authorData.points + parseInt(10));
-			console.log("Match command returned Test2");
 					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
     if (err) console.error(err);
   });
