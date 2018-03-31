@@ -357,6 +357,7 @@ client.on("message", async message => {
   
     	    if(command === "match") {
 	let member = message.mentions.users.first();
+	let membertwo = message.mentions.members.first();
 				if(!points[member.id]) points[member.id] = {
 			points: 0,
 			level: 0
@@ -365,20 +366,50 @@ client.on("message", async message => {
         var x = getRandomInt(0, 9);
 		if (x < 6){
          if (x < 3){
-			message.channel.send(`Test1`);
+			message.channel.send({
+  "embed": {
+    "title": "Rocket League - Solo Duel",
+    "description": `This was a tense match between ${message.author.username} and ${membertwo.displayName}.\n\nThe result were these final scores:`,
+    "color": 16711680,
+    "image": {
+      "url": "./resources/Tournaments.png"
+    },
+    "fields": [
+      {
+        "name": `${message.author.username}`,
+        "value": "Place: 1st\nGoals: 3\nPoints: +15",
+        "inline": true
+      },
+      {
+        "name": `${membertwo.displayName}`,
+        "value": "Place: 2nd\nGoals: 0\nPoints: -15",
+        "inline": true
+      }
+    ]
+  }
+});
 			authorData.points = Math.floor(authorData.points + parseInt(5));
 			console.log("Match command returned Test1");
+					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err);
+  });
 		}
 		else{
                message.channel.send(`Test3`);
 			   authorData.points = Math.floor(authorData.points + parseInt(15));
 			   	console.log("Match command returned Test3");
+						fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err);
+  });
 		}
 		}
 		else{ 
 			message.channel.send(`Test2`);
 			authorData.points = Math.floor(authorData.points + parseInt(10));
 			console.log("Match command returned Test2");
+					fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err);
+  });
 		}
 			}
   
