@@ -475,20 +475,16 @@ client.on("message", async message => {
 	}
 	
 		if(command === "roll") {
-	}
 	var replies = ["1","2","3","4","5","6"];
 	var rand = Math.floor(Math.random() * replies.length);
 	var randomReply = replies[rand];
-	console.log(randomReply); // The one to send
 	message.channel.send(`${message.author} rolled a ${randomReply}.`);
 	}
 	
 			if(command === "rate") {
-	}
 	var replies = ["0/10","1/10","2/10","3/10","4/10",,"5/10","6/10","7/10",,"8/10","9/10","10/10"];
 	var rand = Math.floor(Math.random() * replies.length);
 	var randomReply = replies[rand];
-	console.log(randomReply); // The one to send
 	message.channel.send(`I rate this: ${randomReply}!`);
 	}
 	
