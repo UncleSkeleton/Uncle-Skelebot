@@ -478,11 +478,22 @@ client.on("message", async message => {
     if(!message.member.roles.has(config.adminID) ){
     return message.reply(`${badRole}`);
 	}
-	var replies = ["1","2","3","4"];
+	var replies = ["1","2","3","4","5","6"];
 	var rand = Math.floor(Math.random() * replies.length);
 	var randomReply = replies[rand];
 	console.log(randomReply); // The one to send
-	message.channel.send("You rolled a", randomReply);
+	message.channel.send(`${message.author} rolled a ${randomReply}.`);
+	}
+	
+			if(command === "rate") {
+    if(!message.member.roles.has(config.adminID) ){
+    return message.reply(`${badRole}`);
+	}
+	var replies = ["0/10","1/10","2/10","3/10","4/10",,"5/10","6/10","7/10",,"8/10","9/10","10/10"];
+	var rand = Math.floor(Math.random() * replies.length);
+	var randomReply = replies[rand];
+	console.log(randomReply); // The one to send
+	message.channel.send(`I rate this: ${randomReply}!`);
 	}
 	
   })
