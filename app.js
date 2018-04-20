@@ -474,6 +474,17 @@ client.on("message", async message => {
 	message.channel.send(`Five generators need your help! <@267655839685410816>`);
 	}
 	
+		if(command === "roll") {
+    if(!message.member.roles.has(config.adminID) ){
+    return message.reply(`${badRole}`);
+	}
+	var replies = ["1","2","3","4"];
+	var rand = Math.floor(Math.random() * replies.length);
+	var randomReply = replies[rand];
+	console.log(randomReply); // The one to send
+	message.channel.send("You rolled a", randomReply);
+	}
+	
   })
   
 
