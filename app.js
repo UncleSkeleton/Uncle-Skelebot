@@ -346,13 +346,16 @@ client.on("message", async message => {
   }
   
     if(command === "vcyttest") {
+	const ytdl = require('ytdl-core');
     // Only try to join the sender's voice channel if they are in one themselves
 	console.log(`Attempted join.`);
     if(message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
-		const dispatcher = connection.playArbitraryInput('https://www.youtube.com/watch?v=lpZazCooDXw');
-          message.reply('I have successfully connected to the channel! Now playing Dance Attack FM.');
+		const dispatcher = connection.play(ytdl(
+  'https://www.youtube.com/watch?v=ZlAU_w7-Xp8',
+  { filter: 'audioonly' }));
+          message.reply('I have successfully connected to the channel! Now playing YTTest.');
 		  dispatcher.resume()
 		  console.log("Attempting to play audio.");
         })
