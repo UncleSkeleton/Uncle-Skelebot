@@ -346,15 +346,16 @@ client.on("message", async message => {
     }
   }
   
-    if(command === "vcyttest") {
+    if(command === "youtube") {
 	console.log(`Attempted join.`);
+	const youtubeRequest = args.join(" ");
     if(message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
 		const dispatcher = connection.playStream(ytdl(
-		'https://www.youtube.com/watch?v=ZlAU_w7-Xp8',
+		`${youtubeRequest}`,
 		{ filter: 'audioonly' }));
-          message.reply('I have successfully connected to the channel! Now playing YTTest.');
+          message.reply('I have successfully connected to the channel! Now playing requested audio.');
 		  dispatcher.resume()
 		  console.log("Attempting to play audio.");
         })
