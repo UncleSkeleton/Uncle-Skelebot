@@ -351,7 +351,7 @@ client.on("message", async message => {
     if(message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
-		const dispatcher = connection.play(ytdl(
+		const dispatcher = connection.playStream(ytdl(
 		'https://www.youtube.com/watch?v=ZlAU_w7-Xp8',
 		{ filter: 'audioonly' }));
           message.reply('I have successfully connected to the channel! Now playing YTTest.');
