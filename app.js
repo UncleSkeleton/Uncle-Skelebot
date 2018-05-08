@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
+const ytdl = require('ytdl-core');
 var NOTIFY_CHANNEL;
 
 let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
@@ -346,15 +347,13 @@ client.on("message", async message => {
   }
   
     if(command === "vcyttest") {
-	const ytdl = require('ytdl-core');
-    // Only try to join the sender's voice channel if they are in one themselves
 	console.log(`Attempted join.`);
     if(message.member.voiceChannel) {
       message.member.voiceChannel.join()
         .then(connection => { // Connection is an instance of VoiceConnection
 		const dispatcher = connection.play(ytdl(
-  'https://www.youtube.com/watch?v=ZlAU_w7-Xp8',
-  { filter: 'audioonly' }));
+		'https://www.youtube.com/watch?v=ZlAU_w7-Xp8',
+		{ filter: 'audioonly' }));
           message.reply('I have successfully connected to the channel! Now playing YTTest.');
 		  dispatcher.resume()
 		  console.log("Attempting to play audio.");
