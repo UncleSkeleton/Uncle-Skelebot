@@ -345,6 +345,23 @@ client.on("message", async message => {
     }
   }
   
+    if(command === "vcyttest") {
+    // Only try to join the sender's voice channel if they are in one themselves
+	console.log(`Attempted join.`);
+    if(message.member.voiceChannel) {
+      message.member.voiceChannel.join()
+        .then(connection => { // Connection is an instance of VoiceConnection
+		const dispatcher = connection.playArbitraryInput('https://www.youtube.com/watch?v=lpZazCooDXw');
+          message.reply('I have successfully connected to the channel! Now playing Dance Attack FM.');
+		  dispatcher.resume()
+		  console.log("Attempting to play audio.");
+        })
+        .catch(console.log);
+    } else {
+      message.reply('You need to join a voice channel first!');
+    }
+  }
+  
   if(command === "purge") {
     if(!message.member.roles.has(config.modID) ){
     return message.reply(`${badRole}`);
