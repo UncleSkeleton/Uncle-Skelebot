@@ -136,12 +136,16 @@ client.on("message", async message => {
         value: "Replies with details on the mentioned user."
       },
 	  {
-        name: "!vctest",
-        value: "Plays Dance Attack FM, test command."
+        name: "!danceattack",
+        value: "Plays Dance Attack FM."
       },
 	  {
-        name: "!vcend",
-        value: "Ends the radio stream."
+        name: "!youtube [link]",
+        value: "Plays audio from any YouTube video, work in progress."
+      },
+	  {
+        name: "!leave",
+        value: "Ends the audio stream."
       },
       {
         name: "!ping",
@@ -316,12 +320,12 @@ client.on("message", async message => {
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
   }
   
-    if(command === "vcend") {
+    if(command === "leave") {
     // Only try to join the sender's voice channel if they are in one themselves
 	console.log(`Attempted leave.`);
     if(message.member.voiceChannel) {
       message.member.voiceChannel.leave()
-          message.reply('I have successfully disconnected!');
+      message.delete().catch(O_o=>{}); 
     }
 	else
 	{
@@ -329,7 +333,7 @@ client.on("message", async message => {
 	}
   }
   
-  if(command === "vctest") {
+  if(command === "danceattack") {
     // Only try to join the sender's voice channel if they are in one themselves
 	console.log(`Attempted join.`);
     if(message.member.voiceChannel) {
