@@ -370,7 +370,7 @@ client.on("message", async message => {
   }
   
   if(command === "purge") {
-    if(!message.member.roles.has(config.modID) ){
+    if(!message.member.roles.has(config.ownerID) ){
     return message.reply(`${badRole}`);
 	}
     const deleteCount = parseInt(args[0], 10);
